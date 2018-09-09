@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: usage
+  labels:
+    app: usage
+spec:
+  type: NodePort
+  ports:
+  - port: 9140
+    protocol: TCP
+  selector:
+    app: usage
