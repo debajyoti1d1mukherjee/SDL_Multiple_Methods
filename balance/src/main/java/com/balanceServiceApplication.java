@@ -126,6 +126,21 @@ class balanceRestController {
 	      return resp;
     }
     
+//TEMPLATE_FALLBACK_GET_METHOD_START
+   public com.balance.GetBalanceResponse1 getBalance1FallBack(@PathVariable("id") String id) throws Exception{
+		  com.balance.GetBalanceResponse1 resp = new com.balance.GetBalanceResponse1();
+		  System.out.println("Fallback Get Method Invoked--------------------------");
+		  Class respClass = resp.getClass();
+		  Method[] methods = respClass.getMethods();
+		  for(Method method : methods){			    
+			    if(isSetter(method)) {
+			    	System.out.println("setter: " + method);
+			    	method.invoke(resp, new Object[] { "100M" });
+			    }
+			  }
+	      return resp;
+    }
+   
 //TEMPLATE_POST_METHOD_START
    @RequestMapping(value="saveBalance1/save", method = RequestMethod.POST,produces = { "application/json"})
    @HystrixCommand(fallbackMethod = "saveBalance1FallBack",commandProperties ={
