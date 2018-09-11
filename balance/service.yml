@@ -7,7 +7,7 @@ metadata:
 spec:
   type: NodePort
   ports:
-  - port: 9170
+  - port: 9190
     protocol: TCP
   selector:
     app: balance
