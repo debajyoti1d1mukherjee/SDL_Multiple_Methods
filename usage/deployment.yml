@@ -13,7 +13,7 @@ spec:
       - name: usage                     
         image: debajyotim/usage             
         ports:
-        - containerPort: 9320           
+        - containerPort: 9340           
         env:
         - name: EUREKA_URL
           value: "http://eureka:admin@eureka-server:8761/eureka"
