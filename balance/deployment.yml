@@ -13,7 +13,7 @@ spec:
       - name: balance                     
         image: debajyotim/balance             
         ports:
-        - containerPort: 9290           
+        - containerPort: 9310           
         env:
         - name: EUREKA_URL
           value: "http://eureka:admin@eureka-server:8761/eureka"
