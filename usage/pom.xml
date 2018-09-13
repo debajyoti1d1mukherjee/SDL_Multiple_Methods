@@ -10,12 +10,12 @@
     <relativePath></relativePath>
   </parent>
 
-  <groupId>usage-code_generation_automation</groupId>
-  <artifactId>usage</artifactId>
+  <groupId>template_group</groupId>
+  <artifactId>template_artifact</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>usage</name>
+  <name>template_name</name>
   <url>http://maven.apache.org</url>
 
 
@@ -82,7 +82,7 @@
 				<version>0.4.11</version>
 				<configuration>
 					<!-- <dockerHost>localhost:52714</dockerHost> -->
-					<imageName>usage</imageName>
+					<imageName>template_image</imageName>
 					<dockerDirectory>src/main/docker</dockerDirectory>
 					<resources>
 						<!-- <resource> <targetPath>target</targetPath> <directory>${project.build.directory}</directory> 
@@ -90,7 +90,7 @@
 						<resource>
 							<targetPath>image</targetPath>
 							<directory>src/main/docker</directory>
-							<include>usage.jar</include>
+							<include>template.jar</include>
 						</resource>
 					</resources>
 				</configuration>
