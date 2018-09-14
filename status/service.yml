@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: status
+  labels:
+    app: status
+spec:
+  type: NodePort
+  ports:
+  - port: 8250
+    protocol: TCP
+  selector:
+    app: status
