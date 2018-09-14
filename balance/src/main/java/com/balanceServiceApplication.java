@@ -35,6 +35,116 @@ class balanceRestController {
 
   
 
+//TEMPLATE_GET_METHOD_START
+   @RequestMapping(value="getBalance/{id}", method = RequestMethod.GET,produces = { "application/json"})
+   @HystrixCommand(fallbackMethod = "getBalanceFallBack",commandProperties ={
+				@HystrixProperty(name="execution.isolation.thread.timeoutInMilliseconds",value="5000")
+			})			
+			
+    public com.balance.GetBalanceResponse getBalance(@PathVariable("id") String id) throws Exception{
+		  com.balance.GetBalanceResponse resp = new com.balance.GetBalanceResponse();
+		  System.out.println("Get Method Invoked--------------------------");
+		  Class respClass = resp.getClass();
+		  Method[] methods = respClass.getMethods();
+		  for(Method method : methods){			    
+			    if(isSetter(method)) {
+			    	System.out.println("setter: " + method);
+			    	method.invoke(resp, new Object[] { "100M" });
+			    }
+			  }
+	      return resp;
+    }
+    
+//TEMPLATE_FALLBACK_GET_METHOD_START
+   public com.balance.GetBalanceResponse getBalanceFallBack(@PathVariable("id") String id) throws Exception{
+		  com.balance.GetBalanceResponse resp = new com.balance.GetBalanceResponse();
+		  System.out.println("Fallback Get Method Invoked--------------------------");
+		  Class respClass = resp.getClass();
+		  Method[] methods = respClass.getMethods();
+		  for(Method method : methods){			    
+			    if(isSetter(method)) {
+			    	System.out.println("setter: " + method);
+			    	method.invoke(resp, new Object[] { "100M" });
+			    }
+			  }
+	      return resp;
+    }
+   
+//TEMPLATE_POST_METHOD_START
+   @RequestMapping(value="saveBalance/save", method = RequestMethod.POST,produces = { "application/json"})
+   @HystrixCommand(fallbackMethod = "saveBalanceFallBack",commandProperties ={
+				@HystrixProperty(name="execution.isolation.thread.timeoutInMilliseconds",value="5000")
+			})			
+			
+    public com.balance.SaveBalanceResponse saveBalance(@RequestBody com.balance.SaveBalanceRequest request) throws Exception{
+		  com.balance.SaveBalanceResponse resp = new com.balance.SaveBalanceResponse();
+		  System.out.println("Post Method Invoked--------------------------");
+		  Class respClass = resp.getClass();
+		  Method[] methods = respClass.getMethods();
+		  for(Method method : methods){			    
+			    if(isSetter(method)) {
+			    	System.out.println("setter: " + method);
+			    	method.invoke(resp, new Object[] { "100M" });
+			    }
+			  }
+	      return resp;
+    }
+   
+//TEMPLATE_GET_METHOD_START
+   @RequestMapping(value="getBalance1/{id}", method = RequestMethod.GET,produces = { "application/json"})
+   @HystrixCommand(fallbackMethod = "getBalance1FallBack",commandProperties ={
+				@HystrixProperty(name="execution.isolation.thread.timeoutInMilliseconds",value="5000")
+			})			
+			
+    public com.balance.GetBalanceResponse1 getBalance1(@PathVariable("id") String id) throws Exception{
+		  com.balance.GetBalanceResponse1 resp = new com.balance.GetBalanceResponse1();
+		  System.out.println("Get Method Invoked--------------------------");
+		  Class respClass = resp.getClass();
+		  Method[] methods = respClass.getMethods();
+		  for(Method method : methods){			    
+			    if(isSetter(method)) {
+			    	System.out.println("setter: " + method);
+			    	method.invoke(resp, new Object[] { "100M" });
+			    }
+			  }
+	      return resp;
+    }
+    
+//TEMPLATE_FALLBACK_GET_METHOD_START
+   public com.balance.GetBalanceResponse1 getBalance1FallBack(@PathVariable("id") String id) throws Exception{
+		  com.balance.GetBalanceResponse1 resp = new com.balance.GetBalanceResponse1();
+		  System.out.println("Fallback Get Method Invoked--------------------------");
+		  Class respClass = resp.getClass();
+		  Method[] methods = respClass.getMethods();
+		  for(Method method : methods){			    
+			    if(isSetter(method)) {
+			    	System.out.println("setter: " + method);
+			    	method.invoke(resp, new Object[] { "100M" });
+			    }
+			  }
+	      return resp;
+    }
+   
+//TEMPLATE_POST_METHOD_START
+   @RequestMapping(value="saveBalance1/save", method = RequestMethod.POST,produces = { "application/json"})
+   @HystrixCommand(fallbackMethod = "saveBalance1FallBack",commandProperties ={
+				@HystrixProperty(name="execution.isolation.thread.timeoutInMilliseconds",value="5000")
+			})			
+			
+    public com.balance.SaveBalanceResponse1 saveBalance1(@RequestBody com.balance.SaveBalanceRequest1 request) throws Exception{
+		  com.balance.SaveBalanceResponse1 resp = new com.balance.SaveBalanceResponse1();
+		  System.out.println("Post Method Invoked--------------------------");
+		  Class respClass = resp.getClass();
+		  Method[] methods = respClass.getMethods();
+		  for(Method method : methods){			    
+			    if(isSetter(method)) {
+			    	System.out.println("setter: " + method);
+			    	method.invoke(resp, new Object[] { "100M" });
+			    }
+			  }
+	      return resp;
+    }
+   
 //TEMPLATE_FALLBACK_POST_METHOD_END
    
       public static boolean isSetter(Method method){

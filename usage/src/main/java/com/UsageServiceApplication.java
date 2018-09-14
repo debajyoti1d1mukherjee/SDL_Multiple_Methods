@@ -20,27 +20,29 @@ import org.springframework.web.bind.annotation.RequestBody;
 @EnableEurekaClient
 @EnableCircuitBreaker
 @EnableHystrix
-public class TemplateServiceApplication {
+public class UsageServiceApplication {
     public static void main(String[] args){
-		SpringApplication.run(TemplateServiceApplication.class, args);
+		SpringApplication.run(UsageServiceApplication.class, args);
 		}
 }
 
 	
 	
 @RestController
-class TemplateRestController {
+class UsageRestController {
 
-	public TemplateRestController(){}
+	public UsageRestController(){}
 
-  //TEMPLATE_GET_METHOD_START
-   @RequestMapping(value="templateMethod/{id}", method = RequestMethod.TEMPLATE_METHOD_TYPE,produces = { "application/json"})
-   @HystrixCommand(fallbackMethod = "templateMethodFallBack",commandProperties ={
+  
+
+//TEMPLATE_GET_METHOD_START
+   @RequestMapping(value="getUsage/{id}", method = RequestMethod.GET,produces = { "application/json"})
+   @HystrixCommand(fallbackMethod = "getUsageFallBack",commandProperties ={
 				@HystrixProperty(name="execution.isolation.thread.timeoutInMilliseconds",value="5000")
 			})			
 			
-    public TemplateResponse templateMethod(@PathVariable("id") String id) throws Exception{
-		  TemplateResponse resp = new TemplateResponse();
+    public com.Usage.GetUsageResponse getUsage(@PathVariable("id") String id) throws Exception{
+		  com.Usage.GetUsageResponse resp = new com.Usage.GetUsageResponse();
 		  System.out.println("Get Method Invoked--------------------------");
 		  Class respClass = resp.getClass();
 		  Method[] methods = respClass.getMethods();
@@ -52,38 +54,10 @@ class TemplateRestController {
 			  }
 	      return resp;
     }
-    //TEMPLATE_GET_METHOD_END
     
-    //TEMPLATE_POST_METHOD_START
-   @RequestMapping(value="templateMethod/save", method = RequestMethod.TEMPLATE_METHOD_TYPE,produces = { "application/json"})
-   @HystrixCommand(fallbackMethod = "templateMethodFallBack",commandProperties ={
-				@HystrixProperty(name="execution.isolation.thread.timeoutInMilliseconds",value="5000")
-			})			
-			
-    public TemplateResponse templateMethod(@RequestBody TempleteRequest request) throws Exception{
-		  TemplateResponse resp = new TemplateResponse();
-		  System.out.println("Post Method Invoked--------------------------");
-		  Class respClass = resp.getClass();
-		  Method[] methods = respClass.getMethods();
-		  for(Method method : methods){			    
-			    if(isSetter(method)) {
-			    	System.out.println("setter: " + method);
-			    	method.invoke(resp, new Object[] { "100M" });
-			    }
-			  }
-	      return resp;
-    }
-    //TEMPLATE_POST_METHOD_END
-    
-    public static boolean isSetter(Method method){
-	   if(!method.getName().startsWith("set")) return false;
-	   if(method.getParameterTypes().length != 1) return false;
-	   return true;
-	 }
-	
-   //TEMPLATE_FALLBACK_GET_METHOD_START
-   public TemplateResponse templateMethod(@PathVariable("id") String id) throws Exception{
-		  TemplateResponse resp = new TemplateResponse();
+//TEMPLATE_FALLBACK_GET_METHOD_START
+   public com.Usage.GetUsageResponse getUsageFallBack(@PathVariable("id") String id) throws Exception{
+		  com.Usage.GetUsageResponse resp = new com.Usage.GetUsageResponse();
 		  System.out.println("Fallback Get Method Invoked--------------------------");
 		  Class respClass = resp.getClass();
 		  Method[] methods = respClass.getMethods();
@@ -95,12 +69,16 @@ class TemplateRestController {
 			  }
 	      return resp;
     }
-   //TEMPLATE_FALLBACk_GET_METHOD_END
    
-   //TEMPLATE_FALLBACK_POST_METHOD_START
-   public TemplateResponse templateMethod(@RequestBody TempleteRequest request) throws Exception{
-		  TemplateResponse resp = new TemplateResponse();
-		  System.out.println("Post Fallback Method Invoked--------------------------");
+//TEMPLATE_POST_METHOD_START
+   @RequestMapping(value="saveUsage/save", method = RequestMethod.POST,produces = { "application/json"})
+   @HystrixCommand(fallbackMethod = "saveUsageFallBack",commandProperties ={
+				@HystrixProperty(name="execution.isolation.thread.timeoutInMilliseconds",value="5000")
+			})			
+			
+    public com.Usage.SaveUsageResponse saveUsage(@RequestBody com.Usage.SaveUsageRequest request) throws Exception{
+		  com.Usage.SaveUsageResponse resp = new com.Usage.SaveUsageResponse();
+		  System.out.println("Post Method Invoked--------------------------");
 		  Class respClass = resp.getClass();
 		  Method[] methods = respClass.getMethods();
 		  for(Method method : methods){			    
@@ -112,7 +90,7 @@ class TemplateRestController {
 	      return resp;
     }
    
-   //TEMPLATE_FALLBACK_POST_METHOD_END
+//TEMPLATE_FALLBACK_POST_METHOD_END
    
       public static boolean isSetter(Method method){
 	   if(!method.getName().startsWith("set")) return false;

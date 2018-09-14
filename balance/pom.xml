@@ -10,12 +10,12 @@
     <relativePath></relativePath>
   </parent>
 
-  <groupId>template_group</groupId>
-  <artifactId>template_artifact</artifactId>
+  <groupId>balance-code_generation_automation</groupId>
+  <artifactId>balance</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>template_name</name>
+  <name>balance</name>
   <url>http://maven.apache.org</url>
 
 
@@ -82,7 +82,7 @@
 				<version>0.4.11</version>
 				<configuration>
 					<!-- <dockerHost>localhost:52714</dockerHost> -->
-					<imageName>template_image</imageName>
+					<imageName>balance</imageName>
 					<dockerDirectory>src/main/docker</dockerDirectory>
 					<resources>
 						<!-- <resource> <targetPath>target</targetPath> <directory>${project.build.directory}</directory> 
@@ -90,7 +90,7 @@
 						<resource>
 							<targetPath>image</targetPath>
 							<directory>src/main/docker</directory>
-							<include>template.jar</include>
+							<include>balance.jar</include>
 						</resource>
 					</resources>
 				</configuration>
