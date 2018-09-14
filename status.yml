@@ -1,0 +1,4 @@
+'name:status
+  Method:GET;getStatus;getStatusRequest&{id=String};getUsageResponse&{usage=String};fallbackmathodrequired=Y
+  Method:POST;saveStatus;saveUsageRequest&{id=String,name=String};saveUsageResponse&{usage=String,name=String};fallbackmathodrequired=Y
+  crudrequired:N'
