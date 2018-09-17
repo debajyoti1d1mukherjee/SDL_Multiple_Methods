@@ -1,19 +1,19 @@
 apiVersion: extensions/v1beta1
 kind: Deployment           
 metadata:
-  name: usage                          
+  name: order                          
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: usage                      
+        app: order                      
     spec:
       containers:                       
-      - name: usage                     
-        image: debajyotim/usage             
+      - name: order                     
+        image: debajyotim/order             
         ports:
-        - containerPort: 8460           
+        - containerPort: 8450           
         env:
         - name: EUREKA_URL
           value: "http://eureka:admin@eureka-server:8761/eureka"

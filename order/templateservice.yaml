@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: usage
+  name: templateservice
   labels:
-    app: usage
+    app: templateservice
 spec:
   type: NodePort
   ports:
-  - port: 8460
+  - port: templateport
     protocol: TCP
   selector:
-    app: usage
+    app: templateservice

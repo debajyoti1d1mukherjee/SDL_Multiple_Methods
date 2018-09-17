@@ -1,6 +1,6 @@
 FROM java:8-alpine
-VOLUME /balance
-ADD /target/balance-0.0.1-SNAPSHOT.jar app.jar
+VOLUME /template_app
+ADD /target/XtemplateX_app.jar app.jar
 RUN sh -c 'touch app.jar'
-EXPOSE 8440
+EXPOSE template_port
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-Dspring.profiles.active=docker","-jar","/app.jar"]
