@@ -1,0 +1,6 @@
+'name:Order
+  Method:GET;getOrder;getOrderRequest&{id=String};getOrderResponse&{balance=String};fallbackmathodrequired=Y
+  Method:POST;saveOrder;saveOrderRequest&{id=String,name=String};saveOrderResponse&{balance=String,name=String};fallbackmathodrequired=Y
+  Method:GET;getOrder1;getOrderRequest1&{id=String};getOrderResponse1&{balance=String};fallbackmathodrequired=N
+  Method:POST;saveOrder1;saveOrderRequest1&{id=String,name=String};saveOrderResponse1&{balance=String,name=String};fallbackmathodrequired=Y
+  crudrequired:Y'
