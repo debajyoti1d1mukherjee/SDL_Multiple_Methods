@@ -13,7 +13,7 @@ spec:
       - name: order                     
         image: debajyotim/order             
         ports:
-        - containerPort: 8530           
+        - containerPort: 8550           
         env:
         - name: EUREKA_URL
           value: "http://eureka:admin@eureka-server:8761/eureka"
