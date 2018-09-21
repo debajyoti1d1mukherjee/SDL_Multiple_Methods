@@ -1,0 +1,4 @@
+'name:inventory
+  Method:GET;getInventory;getInventoryRequest&(id=String);getInventoryResponse&(name=String);fallbackmathodrequired=Y
+  Method:GET;saveInventory;saveInventoryRequest&(name=String);saveInventoryResponse&(id=String,name=String);fallbackmathodrequired=Y
+  crudrequired:Y'
